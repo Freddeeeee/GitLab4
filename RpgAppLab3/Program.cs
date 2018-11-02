@@ -8,55 +8,45 @@ namespace RpgAppLab3
         static void Main(string[] args)
         {
             var rnd = new Random();
-
-            var names = new List<string>()
-            {
-                "Alexa",
-                "Ciri",
-                "Phantasma",
-                "Keeloo",
-                "Ryu",
-                "Zangief",
-            };
-
-            Console.WriteLine("Enter a command:");
+            Console.WriteLine("What do you need?");
             var command = Console.ReadLine();
 
-            if (command == "roll d10")
-            {
-                int diceRoll = rnd.Next(1, 10 + 1);
-                Console.WriteLine($"Rolled a D10: {diceRoll}");
-            }
-            else if (command == "roll D8")
-            {
-                var randomIndex = rnd.Next(1, 8 + 1);
-                Console.WriteLine(randomIndex);
-            }
-            else if(command == "!roll D4")
-            {
-                Console.WriteLine($"You rolled a {rnd.Next(1, 4 + 1)}");
-            } else if (command == "names")
-            {
-                Console.WriteLine($"Your random name is: {names[rnd.Next(names.Count)]}");
-            }
-            else if(command == "!roll D100")
-            {
-                Console.WriteLine($"Your rolled a {rnd.Next(1, 100 + 1)}");
-            }
-            Console.ReadKey();
+            if (command == "diced4")
 
-            var equipment = new List<string>()
+                Console.WriteLine("D4 was rolled");
+
+            if (command == "diced8")
             {
-                "plate",
-                "fork",
-                "spoon",
-            };
+                var roll = rnd.Next(8) +1;
+                Console.WriteLine($"Roll D8 dice. Result: {roll}");
+            }
+
+            if (command == "diced10")
+            {
+                Console.WriteLine("d10");
+            }
+
+            if (command == "diced100")
+            {
+                var roll = rnd.Next(100) + 1;
+                Console.WriteLine($"Roll D100 dice. Result: {roll}");
+            }
+
+            if (command == "names")
+            {
+                var allNames = new[] { "Briana", "Ben", "David",
+            "Dana", "Felicia", "Felix", "Max", "Annelie" };
+                var randomIndex = rnd.Next(allNames.Length);
+                Console.WriteLine(allNames[randomIndex]);
+            }
 
             if (command == "equipment")
             {
-                int rndIndx = rnd.Next(0, equipment.Count);
-                Console.WriteLine($"Congratz, you just found a {equipment[rndIndx]}");
+                var equipment = new[] { "Helmet", "Sword", "Shield", "Staff", "Hat", "Shirt", "Axe" };
+                var randomIndex = rnd.Next(equipment.Length);
+                Console.WriteLine(equipment[randomIndex]);
             }
+            Console.ReadKey();
         }
     }
 }
